@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // 用於抓取 URL 參數
-import { client } from "../../studio-react_shop/sanity"; // 確保這是正確的 Sanity 客戶端路徑
-import ImageGallery from "../components/ImageGallery"; // 請確認 ImageGallery 路徑是否正確
-
+import { useParams } from "react-router-dom";
+import { client } from "../../studio-react_shop/sanity";
 import { FiChevronDown } from "react-icons/fi";
 import { motion } from "framer-motion";
 import useMeasure from "react-use-measure";
@@ -63,22 +61,65 @@ const Question = ({ title, children, defaultOpen = false }) => {
   );
 };
 
+// 主圖片顯示元件
+const MainImage = ({ images }) => {
+  const [currentImage, setCurrentImage] = useState(0);
+  
+  if (!images || images.length === 0) {
+    return <div className="h-96 bg-gray-100 flex items-center justify-center">無圖片</div>;
+  }
+  
+  return (
+    <div className="flex flex-col space-y-4">
+      {/* 主圖片 */}
+      <div className="relative overflow-hidden rounded-lg bg-gray-100 h-[500px]">
+        <img 
+          src={images[currentImage]} 
+          alt="Product" 
+          className="w-full h-full object-cover"
+        />
+      </div>
+      
+      {/* 縮圖列表 */}
+      {images.length > 1 && (
+        <div className="flex space-x-2 overflow-x-auto py-2">
+          {images.map((image, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImage(index)}
+              className={`flex-shrink-0 h-20 w-20 rounded-md overflow-hidden border-2 ${
+                currentImage === index ? 'border-blue-500' : 'border-transparent'
+              }`}
+            >
+              <img 
+                src={image} 
+                alt={`Thumbnail ${index + 1}`} 
+                className="h-full w-full object-cover"
+              />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 // 主組件
 const ProductDetail = () => {
-  const { slug } = useParams(); // 從 URL 取得 slug 參數
-  const [product, setProduct] = useState(null); // 儲存產品資料
-  const [loading, setLoading] = useState(true); // 處理載入狀態
-  const [error, setError] = useState(null); // 處理錯誤狀態
+  const { slug } = useParams();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getProductDetail = async () => {
       try {
         setLoading(true);
-        setError(null); // 清除之前的錯誤訊息
+        setError(null);
 
         const query = `*[_type == "product" && slug.current == $slug][0] {
           _id,
-          "images": images[].asset->url, // 解析圖片 URL
+          "images": images[].asset->url,
           name,
           price,
           description,
@@ -86,83 +127,83 @@ const ProductDetail = () => {
           "categoryName": category->name
         }`;
 
-        const data = await client.fetch(query, { slug }); // 使用 Sanity 查詢資料
+        const data = await client.fetch(query, { slug });
         if (!data) {
           throw new Error("Product not found");
         }
 
-        setProduct(data); // 設定取得的產品資料
+        setProduct(data);
       } catch (err) {
-        setError(err.message); // 設置錯誤訊息
+        setError(err.message);
       } finally {
-        setLoading(false); // 停止載入
+        setLoading(false);
       }
     };
 
-    getProductDetail(); // 呼叫函數來取得產品資料
-  }, [slug]); // 當 slug 改變時重新抓取資料
+    getProductDetail();
+  }, [slug]);
 
-  // 處理載入狀態
-  if (loading) return <div>Loading...</div>;
-
-  // 處理錯誤狀態
-  if (error) return <div>Error: {error}</div>;
+  if (loading) return <div className="flex justify-center items-center h-64">Loading...</div>;
+  if (error) return <div className="flex justify-center items-center h-64 text-red-500">Error: {error}</div>;
 
   return (
-    <div className="bg-white">
+    <div className="bg-white -mt-60">
+      {/* 主圖片區域 - 占據全寬，左右各留 15px padding */}
+      <div className="w-full px-4 mb-8">
+        <MainImage images={product.images} />
+      </div>
+      
+      {/* 產品資訊區域 */}
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
-        <div className="grid gap-8 md:grid-cols-2">
-          {/* 圖片畫廊 */}
-          <ImageGallery images={product.images} />
-
-          <div className="md:py-8">
-            {/* 類別名稱與產品名稱 */}
-            <div className="mb-2 md:mb-3">
-              <span className="mb-0.5 inline-block text-gray-500">
-                {product.categoryName}
-              </span>
-              <h2 className="text-2xl font-bold text-gray-800 lg:text-3xl">
-                {product.name}
-              </h2>
-            </div>
-
-            {/* 評價區塊 */}
-            <div className="mb-6 flex items-center gap-3 md:mb-10">
-              <span className="text-sm text-gray-500 transition duration-100">
-                56 Ratings
-              </span>
-            </div>
-
-            {/* 價格區塊 */}
-            <div className="mb-4">
-              <div className="flex items-end gap-2">
-                <span className="text-xl font-bold text-gray-800 md:text-2xl">
-                  ${product.price}
-                </span>
-                <span className="mb-0.5 text-red-500 line-through">
-                  ${product.price + 30}
-                </span>
-              </div>
-              <span className="text-sm text-gray-500">
-               不含運費
-              </span>
-            </div>
-
-            {/* 產品描述 */}
-            <div className="px-4 py-12">
-              <div className="mx-auto max-w-3xl">
-                <h3 className="mb-4 text-center text-3xl font-semibold">
-                  產品描述
-                </h3>
-                <Question title="特色" defaultOpen>
-                  <p>{product.description}</p>
-                </Question>
-
-              
-              
-              </div>
-            </div>
+        <div className="mb-8">
+          {/* 類別名稱與產品名稱 */}
+          <div className="mb-4">
+            <span className="mb-1 inline-block text-gray-500">
+              {product.categoryName}
+            </span>
+            <h2 className="text-3xl font-bold text-gray-800">
+              {product.name}
+            </h2>
           </div>
+
+          {/* 評價區塊 */}
+          <div className="mb-6 flex items-center gap-3">
+            <span className="text-sm text-gray-500 transition duration-100">
+              56 Ratings
+            </span>
+          </div>
+
+          {/* 價格區塊 */}
+          <div className="mb-6">
+            <div className="flex items-end gap-2">
+              <span className="text-2xl font-bold text-gray-800">
+                ${product.price}
+              </span>
+              <span className="mb-0.5 text-red-500 line-through">
+                ${product.price + 30}
+              </span>
+            </div>
+            <span className="text-sm text-gray-500">
+              不含運費
+            </span>
+          </div>
+          
+          {/* 購買按鈕 */}
+          <div className="mb-8">
+            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition-colors">
+              加入購物車
+            </button>
+          </div>
+        </div>
+
+        {/* 產品描述 */}
+        <div className="py-8 border-t border-gray-200">
+          <h3 className="mb-6 text-xl font-semibold">
+            產品描述
+          </h3>
+          <Question title="特色" defaultOpen>
+            <p>{product.description}</p>
+          </Question>
         </div>
       </div>
     </div>
@@ -170,8 +211,3 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
-
- 
-
-
-

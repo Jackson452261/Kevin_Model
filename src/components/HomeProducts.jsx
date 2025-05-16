@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Pagination } from "antd";
 import { client } from "../../studio-react_shop/sanity";
 import { AuthContext } from "./AuthContext";
 import { db } from "../firebase";
@@ -8,46 +7,49 @@ import { doc, setDoc, getDoc, deleteDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { FaHeart } from "react-icons/fa";
 
-// 🔹 取得產品數據（帶有分頁功能）
-const getPaginatedData = async (currentPage, pageSize) => {
-  const start = (currentPage - 1) * pageSize;
-  const end = start + pageSize;
-
-  const query = `*[_type == "product"] | order(_createdAt desc) [${start}...${end}] {
-    _id,
-    price,
-    name,
-    "slug": slug.current,
-    "categoryName": category->name,
-    "imageUrl": images[0].asset->url
-  }`;
-
-  const totalQuery = `count(*[_type == "product"])`;
-  const data = await client.fetch(query);
-  const total = await client.fetch(totalQuery);
-
-  return { data, total };
-};
-
 const HomeProduct = () => {
   const { user } = useContext(AuthContext);
-  const [data, setData] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 4;
+  const [products, setProducts] = useState([]);
   const [favorites, setFavorites] = useState({});
+  const [activeTab, setActiveTab] = useState("全部");
+  const [categories, setCategories] = useState(["全部"]);
+  const [loading, setLoading] = useState(true);
 
-  // 🔹 取得產品數據
+  // 獲取所有產品和分類
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getPaginatedData(currentPage, pageSize);
-      setData(result.data);
-      setTotal(result.total);
+      try {
+        setLoading(true);
+        
+        // 獲取所有分類
+        const categoriesQuery = `*[_type == "category"] { name }`;
+        const categoriesResult = await client.fetch(categoriesQuery);
+        const categoryNames = categoriesResult.map(cat => cat.name);
+        setCategories(["全部", ...categoryNames]);
+        
+        // 獲取所有產品
+        const productsQuery = `*[_type == "product"] {
+          _id,
+          price,
+          name,
+          "slug": slug.current,
+          "categoryName": category->name,
+          "imageUrl": images[0].asset->url
+        }`;
+        const productsResult = await client.fetch(productsQuery);
+        setProducts(productsResult);
+      } catch (error) {
+        console.error("獲取數據時發生錯誤:", error);
+        toast.error("獲取產品時發生錯誤，請稍後再試");
+      } finally {
+        setLoading(false);
+      }
     };
+    
     fetchData();
-  }, [currentPage]);
+  }, []);
 
-  // 🔹 取得該使用者的收藏
+  // 獲取用戶收藏
   useEffect(() => {
     if (user) {
       const fetchFavorites = async () => {
@@ -65,7 +67,7 @@ const HomeProduct = () => {
     }
   }, [user]);
 
-  // ✅ 收藏功能
+  // 切換收藏狀態
   const toggleFavorite = async (product) => {
     if (!user) {
       toast.warn("請先登入才能收藏商品", { position: "top-right", autoClose: 2000 });
@@ -105,23 +107,42 @@ const HomeProduct = () => {
     }
   };
 
-  // ✅ 更新當前頁碼（Pagination 的 `onChange`）
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
+  // 根據選擇的分類過濾產品
+  const filteredProducts = activeTab === "全部" 
+    ? products 
+    : products.filter(product => product.categoryName === activeTab);
+
+  if (loading) {
+    return <div className="flex justify-center items-center h-64">載入中...</div>;
+  }
 
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900">最新產品</h2>
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
+        {/* 分類標籤 */}
+        <div className="mb-8 border-b border-gray-200">
+          <div className="flex space-x-8 overflow-x-auto pb-1">
+            {categories.map((category) => (
+              <button
+                key={category}
+                className={`whitespace-nowrap pb-4 px-1 font-medium text-sm ${
+                  activeTab === category
+                    ? "border-b-2 border-blue-500 text-blue-600"
+                    : "text-gray-500 hover:text-gray-700"
+                }`}
+                onClick={() => setActiveTab(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* 產品列表 */}
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {data.map((product) => (
+        {/* 產品網格 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {filteredProducts.map((product) => (
             <div key={product._id} className="relative group">
-              {/* 愛心收藏按鈕 */}
+              {/* 收藏按鈕 */}
               <button
                 className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md z-10"
                 onClick={() => toggleFavorite(product)}
@@ -129,25 +150,33 @@ const HomeProduct = () => {
                 <FaHeart className={`text-xl ${favorites[product._id] ? "text-red-500" : "text-gray-400"}`} />
               </button>
 
-              {/* ✅ 產品點擊後導引到 `ProductDetail` */}
-              <Link to={`/product/${product.slug}`}>
-                <img src={product.imageUrl} alt={product.name} className="w-full h-64 object-cover rounded-md" />
-                <p className="mt-2 font-bold">{product.name}</p>
-                <p className="text-gray-600">${product.price}</p>
+              {/* 產品圖片和連結 */}
+              <Link to={`/product/${product.slug}`} className="block">
+                <div className="overflow-hidden rounded-lg bg-gray-100 aspect-w-4 aspect-h-3">
+                  <img 
+                    src={product.imageUrl || '/placeholder.jpg'} 
+                    alt={product.name} 
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+                    onError={(e) => {
+                      e.target.src = '/placeholder.jpg';
+                    }}
+                  />
+                </div>
+                <div className="mt-3">
+                  <h3 className="font-medium text-gray-900">{product.name}</h3>
+                  <p className="mt-1 text-gray-600">${product.price}</p>
+                </div>
               </Link>
             </div>
           ))}
         </div>
-      </div>
 
-      {/* ✅ 分頁功能 */}
-      <div className="flex justify-center mt-8">
-        <Pagination
-          current={currentPage}
-          pageSize={pageSize}
-          total={total}
-          onChange={handlePageChange} // **修復 pagination**
-        />
+        {/* 無產品時顯示 */}
+        {filteredProducts.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-500">此分類下暫無產品</p>
+          </div>
+        )}
       </div>
     </div>
   );
