@@ -15,6 +15,29 @@ const HomeProduct = () => {
   const [categories, setCategories] = useState(["全部"]);
   const [loading, setLoading] = useState(true);
 
+  // 禁用右鍵選單和圖片拖曳
+  useEffect(() => {
+    const disableRightClick = (e) => {
+      e.preventDefault();
+      console.log('右鍵功能已禁用，無法下載圖片');
+    };
+
+    // 禁用圖片拖曳
+    const disableDrag = (e) => {
+      e.preventDefault();
+    };
+
+    // 添加事件監聽器
+    document.addEventListener('contextmenu', disableRightClick);
+    document.addEventListener('dragstart', disableDrag);
+
+    // 清理函數 - 組件卸載時移除事件監聽器
+    return () => {
+      document.removeEventListener('contextmenu', disableRightClick);
+      document.removeEventListener('dragstart', disableDrag);
+    };
+  }, []);
+
   // 獲取所有產品和分類
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +45,10 @@ const HomeProduct = () => {
         setLoading(true);
         
         // 獲取所有分類
-        const categoriesQuery = `*[_type == "category"] { name }`;
+        const categoriesQuery = `*[_type == "category"] | order(name asc) { 
+          name,
+          "slug": slug.current
+        }`;
         const categoriesResult = await client.fetch(categoriesQuery);
         const categoryNames = categoriesResult.map(cat => cat.name);
         setCategories(["全部", ...categoryNames]);
@@ -34,6 +60,7 @@ const HomeProduct = () => {
           name,
           "slug": slug.current,
           "categoryName": category->name,
+          "categorySlug": category->slug.current,
           "imageUrl": images[0].asset->url
         }`;
         const productsResult = await client.fetch(productsQuery);
@@ -94,6 +121,7 @@ const HomeProduct = () => {
           price: product.price,
           imageUrl: product.imageUrl,
           slug: product.slug,
+          categoryName: product.categoryName
         };
 
         await setDoc(userRef, { favorites: updatedFavorites }, { merge: true });
@@ -160,11 +188,17 @@ const HomeProduct = () => {
                     onError={(e) => {
                       e.target.src = '/placeholder.jpg';
                     }}
+                    onDragStart={(e) => e.preventDefault()} // 禁止拖曳圖片
                   />
                 </div>
                 <div className="mt-3">
                   <h3 className="font-medium text-gray-900">{product.name}</h3>
                   <p className="mt-1 text-gray-600">${product.price}</p>
+                  {product.categoryName && (
+                    <span className="inline-block mt-1 px-2 py-1 bg-gray-100 text-xs rounded-full text-gray-600">
+                      {product.categoryName}
+                    </span>
+                  )}
                 </div>
               </Link>
             </div>

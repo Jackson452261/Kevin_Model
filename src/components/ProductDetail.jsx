@@ -77,6 +77,8 @@ const MainImage = ({ images }) => {
           src={images[currentImage]} 
           alt="Product" 
           className="w-full h-full object-cover"
+          // 禁用拖曳圖片
+          onDragStart={(e) => e.preventDefault()}
         />
       </div>
       
@@ -95,6 +97,7 @@ const MainImage = ({ images }) => {
                 src={image} 
                 alt={`Thumbnail ${index + 1}`} 
                 className="h-full w-full object-cover"
+                onDragStart={(e) => e.preventDefault()}
               />
             </button>
           ))}
@@ -110,6 +113,29 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // 禁用右鍵選單
+  useEffect(() => {
+    const disableRightClick = (e) => {
+      e.preventDefault();
+      console.log('右鍵功能已禁用，無法下載圖片');
+    };
+
+    // 添加事件監聽器
+    document.addEventListener('contextmenu', disableRightClick);
+
+    // 禁用圖片拖曳
+    const disableDrag = (e) => {
+      e.preventDefault();
+    };
+    document.addEventListener('dragstart', disableDrag);
+
+    // 清理函數 - 組件卸載時移除事件監聽器
+    return () => {
+      document.removeEventListener('contextmenu', disableRightClick);
+      document.removeEventListener('dragstart', disableDrag);
+    };
+  }, []);
 
   useEffect(() => {
     const getProductDetail = async () => {
@@ -147,9 +173,9 @@ const ProductDetail = () => {
   if (error) return <div className="flex justify-center items-center h-64 text-red-500">Error: {error}</div>;
 
   return (
-    <div className="bg-white -mt-60">
+    <div className="bg-white -mt-6">
       {/* 主圖片區域 - 占據全寬，左右各留 15px padding */}
-      <div className="w-full px-4 mb-8">
+      <div className="w-full px-4">
         <MainImage images={product.images} />
       </div>
       
