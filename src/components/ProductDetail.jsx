@@ -70,13 +70,13 @@ const MainImage = ({ images }) => {
   }
   
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col">
       {/* 主圖片 */}
-      <div className="relative overflow-hidden rounded-lg bg-gray-100 h-[500px]">
+      <div className="relative overflow-hidden min-h-[100px] flex items-center justify-center">
         <img 
           src={images[currentImage]} 
           alt="Product" 
-          className="w-full h-full object-cover"
+          className="max-w-[60%]  object-contain"
           // 禁用拖曳圖片
           onDragStart={(e) => e.preventDefault()}
         />
