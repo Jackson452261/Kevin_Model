@@ -6,6 +6,7 @@ import Test from "./components/Test";
 import Login from "./components/Login";
 import Blog from "./components/Blog";
 import BlogDetail from "./components/BlogDetail";
+import Gallery from "./components/Gallery";
 
 // Portfolio pages - simple placeholder components for now
 const About = () => <div className="p-8"><h1 className="text-3xl font-bold">About Page</h1><p>About content will go here.</p></div>;
@@ -23,6 +24,7 @@ export const SetRoutes = () => {
     { path: "/product/:slug", element: <ProductDetail /> },
     { path: "/blog", element: <Blog /> },
     { path: "/blog/:slug", element: <BlogDetail /> },
+    { path: "/gallery", element: <Gallery /> },
     { path: "/about", element: <About /> },
     { path: "/service", element: <Service /> },
     { path: "/resume", element: <Resume /> },

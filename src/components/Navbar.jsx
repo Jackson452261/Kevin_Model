@@ -33,10 +33,10 @@ const PortfolioNav = () => {
         <NavLink to="/blog" text="Blog" isPortfolioPage={isPortfolioPage} />
         <NavLink to="/problem" text="問與答Q&A" isPortfolioPage={isPortfolioPage} />
         <NavLink to="/about" text="About" isPortfolioPage={isPortfolioPage} />
-        <NavLink to="/service" text="Service" isPortfolioPage={isPortfolioPage} />
-        <NavLink to="/resume" text="Resume" isPortfolioPage={isPortfolioPage} />
+        <NavLink to="/gallery" text="攝影照片" isPortfolioPage={isPortfolioPage} />
+         
         <NavLink to="/portfolio" text="Portfolio" isPortfolioPage={isPortfolioPage} />
-        <NavLink to="/testimonials" text="Testimonials" isPortfolioPage={isPortfolioPage} />
+       
         <ContactLink text="Contact" isPortfolioPage={isPortfolioPage} />
       </div>
 
@@ -58,7 +58,7 @@ const PortfolioNav = () => {
             <MobileNavLink to="/blog" text="Blog" isPortfolioPage={isPortfolioPage} />
             <MobileNavLink to="/problem" text="問與答Q&A" isPortfolioPage={isPortfolioPage} />
             <MobileNavLink to="/about" text="About" isPortfolioPage={isPortfolioPage} />
-            <MobileNavLink to="/service" text="Service" isPortfolioPage={isPortfolioPage} />
+            <MobileNavLink to="/gallery" text="攝影照片" isPortfolioPage={isPortfolioPage} />
             <MobileNavLink to="/resume" text="Resume" isPortfolioPage={isPortfolioPage} />
             <MobileNavLink to="/portfolio" text="Portfolio" isPortfolioPage={isPortfolioPage} />
             <MobileNavLink to="/testimonials" text="Testimonials" isPortfolioPage={isPortfolioPage} />
