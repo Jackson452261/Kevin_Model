@@ -30,6 +30,7 @@ const PortfolioNav = () => {
       {/* Desktop Navigation */}
       <div className="hidden md:flex items-center space-x-4 lg:space-x-8 flex-wrap">
         <NavLink to="/" text="首頁" isPortfolioPage={isPortfolioPage} />
+        <NavLink to="/blog" text="Blog" isPortfolioPage={isPortfolioPage} />
         <NavLink to="/problem" text="問與答Q&A" isPortfolioPage={isPortfolioPage} />
         <NavLink to="/about" text="About" isPortfolioPage={isPortfolioPage} />
         <NavLink to="/service" text="Service" isPortfolioPage={isPortfolioPage} />
@@ -54,6 +55,7 @@ const PortfolioNav = () => {
         <div className={`absolute top-full left-0 right-0 ${isPortfolioPage ? 'bg-teal-400' : 'bg-white border-b border-gray-200'} md:hidden z-50`}>
           <div className="flex flex-col space-y-4 px-6 py-4">
             <MobileNavLink to="/" text="首頁" isPortfolioPage={isPortfolioPage} />
+            <MobileNavLink to="/blog" text="Blog" isPortfolioPage={isPortfolioPage} />
             <MobileNavLink to="/problem" text="問與答Q&A" isPortfolioPage={isPortfolioPage} />
             <MobileNavLink to="/about" text="About" isPortfolioPage={isPortfolioPage} />
             <MobileNavLink to="/service" text="Service" isPortfolioPage={isPortfolioPage} />

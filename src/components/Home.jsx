@@ -1,9 +1,11 @@
- import HomeProduct from "./HomeProducts"
+import HomeProduct from "./HomeProducts"
+import Blog from "./Blog"
 
 const Home = () => {
   return (
     <div>
         <HomeProduct />
+        <Blog />
     </div>
   )
 }
