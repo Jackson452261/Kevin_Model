@@ -7,7 +7,7 @@ function Problem() {
       <Accordion.Item eventKey="0">
         <Accordion.Header>喜歡拍攝什麼題材？</Accordion.Header>
         <Accordion.Body>
-        喜歡拍攝人像與風景:人像能捕捉情感的瞬間，而風景則呈現自然的壯麗與寧靜。 。
+        喜歡拍攝人像與風景:人像能捕捉情感的瞬間，而風景則呈現自然的壯麗與寧靜。
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="1">
