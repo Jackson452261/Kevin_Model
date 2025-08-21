@@ -6,252 +6,255 @@ const BlogDetail = () => {
 
   // Sample blog data (same as in Blog component - in a real app, this would come from an API or context)
   const blogPosts = [
+     
+       
     {
       id: 1,
-      title: "Hidden Gems of Southeast Asia",
-      description: "Discover breathtaking destinations off the beaten path that will transform your perspective on travel.",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-      date: "Dec 15, 2024",
-      readTime: "8 min read",
+      title: "東南亞的隱藏寶藏",
+      description: "探索那些鮮為人知的絕美目的地，改變你對旅行的觀點。",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?...",
+      date: "2024年12月15日",
+      readTime: "閱讀時間 8 分鐘",
       rating: 4.0,
       slug: "hidden-gems-southeast-asia",
       author: "Sarah Johnson",
       content: `
-        <p>Southeast Asia has always been a magnet for travelers seeking adventure, culture, and natural beauty. While popular destinations like Bangkok, Bali, and Singapore draw millions of visitors annually, there's a whole world of hidden gems waiting to be discovered by those willing to venture off the beaten path.</p>
+        <p>東南亞一直是尋找冒險、文化和自然美景旅人的磁石。雖然曼谷、峇里島和新加坡等熱門地點每年吸引數百萬遊客，但仍有許多隱藏的秘境等待勇於探索的人發現。</p>
         
-        <h2>The Untouched Islands of Raja Ampat</h2>
-        <p>Located in Indonesia's West Papua province, Raja Ampat is often called the "Crown Jewel of Marine Biodiversity." This remote archipelago consists of four main islands surrounded by smaller islets, offering some of the world's most pristine diving and snorkeling experiences.</p>
+        <h2>拉賈安帕特的未受破壞群島</h2>
+        <p>位於印尼西巴布亞省的拉賈安帕特，被譽為「海洋生物多樣性的皇冠明珠」。這個偏遠的群島由四座主要島嶼和無數小島組成，提供世界上最純淨的潛水與浮潛體驗。</p>
         
-        <p>The waters here are home to over 1,500 species of fish and 75% of all known coral species. What makes Raja Ampat truly special is its commitment to conservation – local communities have established marine protected areas that ensure these underwater treasures remain unspoiled for future generations.</p>
+        <p>這片海域孕育超過 1,500 種魚類及 75% 已知的珊瑚品種。拉賈安帕特真正特別之處在於其對保育的承諾 —— 當地社群已建立海洋保護區，確保這些水下寶藏能保存給未來世代。</p>
         
-        <h2>The Ancient Temples of Bagan</h2>
-        <p>While Angkor Wat gets most of the attention, Myanmar's Bagan offers an equally spectacular temple experience with far fewer crowds. This ancient city is home to over 2,000 Buddhist temples and pagodas scattered across a vast plain.</p>
+        <h2>蒲甘的古老寺廟</h2>
+        <p>雖然吳哥窟最受矚目，但緬甸的蒲甘也提供同樣壯麗卻人潮稀少的寺廟體驗。這座古城擁有超過 2,000 座佛教寺廟與佛塔，遍布廣闊的平原。</p>
         
-        <p>The best way to experience Bagan is from a hot air balloon at sunrise, watching the mist rise from the Irrawaddy River as the golden temples emerge from the morning haze. It's a sight that will stay with you forever.</p>
+        <p>最佳體驗方式是清晨搭乘熱氣球，當伊洛瓦底江上升起薄霧，金色寺廟逐漸從晨霧中浮現，那畫面將永生難忘。</p>
         
-        <h2>The Floating Markets of Can Tho</h2>
-        <p>Vietnam's Mekong Delta is famous for its floating markets, but most tourists only visit the commercialized ones near Ho Chi Minh City. For a more authentic experience, head to Can Tho's Cai Rang floating market, where local farmers have been trading fruits and vegetables from their boats for generations.</p>
+        <h2>芹苴的水上市場</h2>
+        <p>越南湄公河三角洲以水上市場聞名，但大多數遊客只會去胡志明市附近的觀光化市場。若想體驗更真實的氛圍，前往芹苴的蔡楊水上市場吧，當地農民世世代代在此以小船交易水果與蔬菜。</p>
         
-        <p>Arrive early in the morning to see the market at its most vibrant, with boats laden with pineapples, dragon fruit, and other tropical produce creating a colorful mosaic on the water.</p>
+        <p>清晨抵達是最佳時機，你將看到滿載鳳梨、火龍果等熱帶水果的船隻，交織出水面上一幅繽紛的馬賽克畫。</p>
       `
     },
     {
       id: 2,
-      title: "European Food Markets: A Culinary Journey",
-      description: "From Barcelona's La Boqueria to Istanbul's Grand Bazaar, explore the world's most vibrant food scenes.",
-      image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-      date: "Dec 12, 2024",
-      readTime: "6 min read",
+      title: "歐洲美食市集：一場味覺之旅",
+      description: "從巴塞隆納的博克利亞市場到伊斯坦堡的大市集，探索世界上最熱鬧的美食場景。",
+      image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?...",
+      date: "2024年12月12日",
+      readTime: "閱讀時間 6 分鐘",
       rating: 4.8,
       slug: "european-food-markets",
       author: "Marco Rodriguez",
       content: `
-        <p>Europe's food markets are more than just places to shop – they're cultural institutions that have been feeding communities for centuries. Each market tells a story of local traditions, seasonal ingredients, and culinary heritage passed down through generations.</p>
+        <p>歐洲的美食市集不只是購物的地方，更是滋養社群數百年的文化象徵。每一個市集都承載著當地傳統、時令食材，以及世代相傳的飲食文化。</p>
         
-        <h2>La Boqueria, Barcelona</h2>
-        <p>Perhaps the most famous food market in Europe, La Boqueria has been serving Barcelona since the 13th century. Located just off Las Ramblas, this vibrant market is a feast for all the senses.</p>
+        <h2>巴塞隆納 ─ 博克利亞市場</h2>
+        <p>或許是歐洲最著名的市集，博克利亞市場自 13 世紀起就服務著巴塞隆納。位於蘭布拉大道旁，這裡是感官的盛宴。</p>
         
-        <p>Don't miss the fresh fruit juices, jamón ibérico, and the incredible variety of seafood. The market's colorful displays of fruits and vegetables are Instagram-worthy, but the real magic happens when you taste the incredible flavors.</p>
+        <p>千萬別錯過新鮮果汁、西班牙伊比利火腿，以及種類繁多的海鮮。繽紛的水果蔬菜攤位雖然適合拍照，但真正的魔力來自於那些令人驚豔的味道。</p>
         
-        <h2>Borough Market, London</h2>
-        <p>London's Borough Market is a food lover's paradise, showcasing the best of British and international cuisine. Dating back to the 13th century, it's one of the oldest food markets in London.</p>
+        <h2>倫敦 ─ 博羅市場</h2>
+        <p>倫敦的博羅市場是美食愛好者的天堂，匯聚英國及國際料理的精華。始於 13 世紀，它是倫敦最古老的美食市集之一。</p>
         
-        <p>Sample artisanal cheeses, freshly baked bread, and gourmet street food from around the world. The market's Victorian architecture provides a stunning backdrop for your culinary adventure.</p>
+        <p>別錯過手工起司、新鮮出爐的麵包，以及來自世界各地的街頭美食。維多利亞式的建築更為你的美食冒險增添了壯麗背景。</p>
       `
     },
     {
       id: 3,
-      title: "Solo Travel in Japan: Complete Guide",
-      description: "Navigate the Land of the Rising Sun with confidence. Essential tips for first-time solo travelers.",
-      image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-      date: "Dec 10, 2024",
-      readTime: "12 min read",
+      title: "日本單人旅行：完整指南",
+      description: "自信暢遊日出之國，首次單人旅行的必備技巧。",
+      image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?...",
+      date: "2024年12月10日",
+      readTime: "閱讀時間 12 分鐘",
       rating: 4.9,
       slug: "solo-travel-japan",
       author: "Yuki Tanaka",
       content: `
-        <p>Japan is one of the world's best destinations for solo travelers. The country's safety, efficiency, and unique culture make it an ideal place to explore on your own. Here's everything you need to know for your first solo adventure in the Land of the Rising Sun.</p>
+        <p>日本是世界上最適合單人旅行的國家之一。安全、便利與獨特的文化，讓它成為獨自探索的理想選擇。以下是首次單人暢遊日本所需知道的一切。</p>
         
-        <h2>Getting Around: The JR Pass</h2>
-        <p>The Japan Rail Pass is your ticket to exploring the country efficiently and affordably. This pass gives you unlimited access to most JR trains, including the famous shinkansen (bullet trains).</p>
+        <h2>交通：JR 周遊券</h2>
+        <p>日本鐵路周遊券（JR Pass）是高效且實惠的交通方式。持此票可無限搭乘大部分 JR 列車，包括著名的新幹線。</p>
         
-        <p>Purchase your JR Pass before arriving in Japan for the best rates. The 7-day pass is perfect for first-time visitors planning to visit Tokyo, Kyoto, and Osaka.</p>
+        <p>建議在抵達日本前購買，可享最佳價格。7 日票非常適合首次造訪東京、京都、大阪的旅客。</p>
         
-        <h2>Where to Stay: Capsule Hotels and Ryokans</h2>
-        <p>Japan offers unique accommodation options perfect for solo travelers. Capsule hotels provide affordable, safe, and clean lodging in city centers, while traditional ryokans offer an authentic Japanese experience with tatami mats, futon beds, and communal baths.</p>
+        <h2>住宿選擇：膠囊旅館與旅館（Ryokan）</h2>
+        <p>日本提供多樣化的住宿選擇，特別適合單人旅行者。膠囊旅館位於市中心，價位親民、安全又乾淨；傳統旅館則能體驗榻榻米、蒲團與公共浴池，享受道地的日本風情。</p>
         
-        <h2>Cultural Etiquette</h2>
-        <p>Understanding Japanese etiquette will enhance your travel experience. Always bow when greeting, remove shoes when entering homes or certain restaurants, and avoid eating while walking. These small gestures show respect for local customs.</p>
+        <h2>文化禮儀</h2>
+        <p>了解日本的文化禮儀能大幅提升旅行體驗。見面時鞠躬、進入民宅或餐廳需脫鞋、避免邊走邊吃——這些小細節都展現對當地文化的尊重。</p>
       `
     },
     {
       id: 4,
-      title: "Mountain Adventures in the Alps",
-      description: "Experience the breathtaking beauty of Alpine peaks and discover hiking trails that will leave you speechless.",
-      image: "https://images.unsplash.com/photo-1464822759844-d150baec0494?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-      date: "Dec 08, 2024",
-      readTime: "10 min read",
+      title: "阿爾卑斯山的登山冒險",
+      description: "體驗壯麗的阿爾卑斯山峰，探索令人屏息的健行步道。",
+      image: "https://images.unsplash.com/photo-1464822759844-d150baec0494?...",
+      date: "2024年12月08日",
+      readTime: "閱讀時間 10 分鐘",
       rating: 4.7,
       slug: "mountain-adventures-alps",
       author: "Elena Schmidt",
       content: `
-        <p>The Alps stretch across eight countries and offer some of the world's most spectacular mountain scenery. From the iconic Matterhorn to the pristine lakes of Austria, this mountain range provides endless opportunities for adventure seekers and nature lovers alike.</p>
+        <p>阿爾卑斯山橫跨八個國家，擁有世界上最壯觀的山景。從著名的馬特洪峰到奧地利的純淨湖泊，這片山脈為冒險者與大自然愛好者提供無窮選擇。</p>
         
-        <h2>The Classic Alpine Hiking Routes</h2>
-        <p>The Tour du Mont Blanc is perhaps the most famous long-distance hiking trail in the Alps, circling the Mont Blanc massif through France, Italy, and Switzerland. This 170-kilometer trek takes you through diverse landscapes, from glacial valleys to high alpine meadows.</p>
+        <h2>經典健行路線</h2>
+        <p>勃朗峰環山步道（Tour du Mont Blanc）是阿爾卑斯最著名的長程健行路線，全長 170 公里，橫跨法國、義大利與瑞士，沿途風光從冰河谷地到高山草原。</p>
         
-        <p>For those seeking a shorter but equally rewarding experience, the Haute Route from Chamonix to Zermatt offers stunning glacier views and challenging terrain that will test even experienced hikers.</p>
+        <p>想挑戰短程卻同樣值得的路線，可以選擇霞慕尼至策馬特的高山路線（Haute Route），沿途可欣賞壯麗的冰河美景與高難度地形。</p>
         
-        <h2>Alpine Lakes and Villages</h2>
-        <p>The Alps are home to countless pristine lakes, each more beautiful than the last. Lake Bled in Slovenia, with its fairy-tale island church, and Lake Annecy in France, known as the "Pearl of the French Alps," are must-visit destinations.</p>
+        <h2>阿爾卑斯湖泊與山村</h2>
+        <p>阿爾卑斯擁有無數絕美湖泊，如斯洛維尼亞的布萊德湖（Bled），島上教堂宛如童話；法國的安錫湖則被稱為「法國阿爾卑斯的明珠」。</p>
         
-        <p>Don't miss the charming mountain villages like Hallstatt in Austria or Gimmelwald in Switzerland, where traditional Alpine culture is still very much alive.</p>
+        <p>別錯過奧地利的哈修塔特（Hallstatt）或瑞士的金梅瓦爾德（Gimmelwald），這些山村至今仍保留傳統的阿爾卑斯文化。</p>
         
-        <h2>Best Time to Visit</h2>
-        <p>Summer (June to September) is ideal for hiking and outdoor activities, while winter transforms the Alps into a wonderland perfect for skiing and snowboarding. Spring and autumn offer fewer crowds and stunning seasonal colors.</p>
+        <h2>最佳旅遊時機</h2>
+        <p>夏季（6 月至 9 月）適合健行與戶外活動；冬季則化身滑雪與單板的天堂。春秋季人潮較少，色彩繽紛也別具魅力。</p>
       `
     },
     {
       id: 5,
-      title: "Street Art Capitals of the World",
-      description: "Explore vibrant street art scenes from Berlin to Buenos Aires and discover the stories behind the walls.",
-      image: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-      date: "Dec 05, 2024",
-      readTime: "7 min read",
+      title: "世界街頭藝術之都",
+      description: "從柏林到布宜諾斯艾利斯，探索充滿活力的街頭藝術與牆上的故事。",
+      image: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?...",
+      date: "2024年12月05日",
+      readTime: "閱讀時間 7 分鐘",
       rating: 4.5,
       slug: "street-art-capitals",
       author: "Diego Martinez",
       content: `
-        <p>Street art has evolved from underground rebellion to mainstream cultural expression, transforming urban landscapes around the world. These cities have embraced street art as a legitimate art form, creating open-air galleries that tell stories of culture, politics, and human experience.</p>
+        <p>街頭藝術已從地下反叛文化轉變為主流藝術表達，重塑全球城市風貌。這些城市擁抱街頭藝術，將其視為合法藝術，並打造露天美術館，呈現文化、政治與人性的故事。</p>
         
-        <h2>Berlin: The Graffiti Capital</h2>
-        <p>Berlin's street art scene is legendary, with the East Side Gallery being the longest remaining section of the Berlin Wall, now covered in murals by international artists. The city's liberal attitude toward street art has created neighborhoods like Kreuzberg and Friedrichshain that are living canvases.</p>
+        <h2>柏林：塗鴉之都</h2>
+        <p>柏林的街頭藝術聞名全球，其中東邊畫廊是柏林圍牆僅存的最長段落，如今覆滿國際藝術家的壁畫。自由開放的態度讓克羅伊茨貝格與弗里德里希斯海因等區域化身為「活的畫布」。</p>
         
-        <p>Take a street art tour through these districts to discover hidden gems and learn about the political and social messages behind the artwork.</p>
+        <p>參加導覽，探索隱藏的藝術作品，了解背後的政治與社會意涵。</p>
         
-        <h2>Buenos Aires: South American Expression</h2>
-        <p>Buenos Aires has one of the most vibrant street art scenes in South America. The city's economic struggles have given rise to powerful political murals, while neighborhoods like Palermo and San Telmo showcase colorful, artistic expressions of Argentine culture.</p>
+        <h2>布宜諾斯艾利斯：南美的藝術表達</h2>
+        <p>布宜諾斯艾利斯擁有南美最具活力的街頭藝術場景。經濟困境催生出強烈的政治壁畫，而巴勒莫與聖太摩等街區則展現多彩的阿根廷文化藝術。</p>
         
-        <p>The city even offers official street art tours, showing how the local government has embraced this form of artistic expression.</p>
+        <p>當地甚至推出官方街頭藝術導覽，顯示政府已將其視為文化資產。</p>
         
-        <h2>Melbourne: Laneway Culture</h2>
-        <p>Melbourne's famous laneways are a maze of street art, from large-scale murals to intricate stencil work. The city's street art is constantly evolving, with new pieces appearing regularly in areas like Hosier Lane and AC/DC Lane.</p>
+        <h2>墨爾本：巷弄文化</h2>
+        <p>墨爾本著名的巷弄如同街頭藝術迷宮，從大幅壁畫到精緻的模板噴畫應有盡有。這些藝術作品不斷更新，霍西爾巷與 AC/DC 巷是必訪之地。</p>
       `
     },
     {
       id: 6,
-      title: "Island Hopping in the Mediterranean",
-      description: "Sail through crystal-clear waters and discover hidden coves in the most beautiful Mediterranean islands.",
-      image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-      date: "Dec 03, 2024",
-      readTime: "9 min read",
+      title: "地中海跳島之旅",
+      description: "航行於碧藍海水間，發現最美麗的地中海島嶼與祕密海灣。",
+      image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?...",
+      date: "2024年12月03日",
+      readTime: "閱讀時間 9 分鐘",
       rating: 4.6,
       slug: "mediterranean-island-hopping",
       author: "Sofia Papadopoulos",
       content: `
-        <p>The Mediterranean Sea is dotted with thousands of islands, each offering its own unique blend of history, culture, and natural beauty. Island hopping in this ancient sea is like traveling through time, from prehistoric ruins to medieval fortresses to modern beach resorts.</p>
+        <p>地中海上散落著數千座島嶼，每座島都有獨特的歷史、文化與自然景觀。跳島旅行就像穿越時光，從史前遺跡到中世紀堡壘，再到現代度假勝地。</p>
         
-        <h2>The Greek Islands: Cycladic Beauty</h2>
-        <p>The Cyclades offer the quintessential Greek island experience with their white-washed buildings, blue-domed churches, and dramatic clifftop villages. Start with Santorini for its famous sunsets, then explore Mykonos for its vibrant nightlife, and discover hidden gems like Folegandros and Sifnos.</p>
+        <h2>希臘群島：基克拉迪風情</h2>
+        <p>基克拉迪群島展現經典的希臘風格：白牆藍頂教堂、懸崖村莊。先到聖托里尼欣賞日落，再去米克諾斯享受夜生活，然後探索隱藏版的佛雷甘德羅斯與西弗諾斯。</p>
         
-        <p>Each island has its own personality - from the party atmosphere of Ios to the artistic community of Hydra, where cars are banned and donkeys still carry goods through narrow stone streets.</p>
+        <p>每座島都有不同性格——從伊奧斯的派對氛圍，到依舊用驢子運貨的藝術島嶼希德拉。</p>
         
-        <h2>The Balearic Islands: Spanish Paradise</h2>
-        <p>Spain's Balearic Islands offer a perfect mix of beach relaxation and cultural exploration. Ibiza is famous for its electronic music scene, but also boasts UNESCO World Heritage sites and pristine beaches. Mallorca combines stunning coastlines with charming mountain villages and excellent hiking.</p>
+        <h2>巴利阿里群島：西班牙天堂</h2>
+        <p>西班牙的巴利阿里群島融合海灘放鬆與文化探索。伊比薩雖以電子音樂著名，但也有世界文化遺產與純淨海灘。馬略卡結合美麗海岸線、山中村莊與絕佳健行路線。</p>
         
-        <p>Don't overlook Menorca, a UNESCO Biosphere Reserve with some of the most unspoiled beaches in the Mediterranean.</p>
+        <p>別錯過梅諾卡，它是聯合國教科文組織生物圈保護區，擁有地中海最原始的海灘。</p>
         
-        <h2>Planning Your Island-Hopping Adventure</h2>
-        <p>The best time for island hopping is late spring through early fall when ferry services are most frequent. Consider purchasing an island-hopping pass for cost-effective travel, and always book accommodations in advance during peak summer months.</p>
+        <h2>行程規劃</h2>
+        <p>最佳跳島時機為晚春至初秋，渡輪航班最為頻繁。建議購買跳島套票以節省開支，夏季旺季務必提前預訂住宿。</p>
       `
     },
     {
       id: 7,
-      title: "Northern Lights: A Photographer's Dream",
-      description: "Capture the magic of Aurora Borealis with expert tips and the best locations for stunning photographs.",
-      image: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-      date: "Nov 28, 2024",
-      readTime: "11 min read",
+      title: "極光攝影：攝影師的夢想",
+      description: "捕捉極光魔力，專家技巧與最佳取景地完整指南。",
+      image: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?...",
+      date: "2024年11月28日",
+      readTime: "閱讀時間 11 分鐘",
       rating: 4.9,
       slug: "northern-lights-photography",
       author: "Lars Andersen",
       content: `
-        <p>The Aurora Borealis, or Northern Lights, is one of nature's most spectacular phenomena. These dancing curtains of light have captivated humans for millennia, and with the right knowledge and equipment, you can capture their ethereal beauty in stunning photographs.</p>
+        <p>北極光是大自然最壯麗的奇觀之一。這些舞動的光幕數千年來吸引人類目光，只要掌握正確知識與設備，你也能捕捉到它的神秘之美。</p>
         
-        <h2>Understanding the Aurora</h2>
-        <p>The Northern Lights occur when charged particles from the sun interact with Earth's magnetic field and atmosphere. The best viewing occurs during the dark months from September to March, with peak activity around the equinoxes.</p>
+        <h2>認識極光</h2>
+        <p>極光是太陽帶電粒子與地球磁場、大氣層互動的結果。最佳觀賞期為 9 月至 3 月的黑夜季，春分與秋分前後活動最頻繁。</p>
         
-        <p>Aurora activity follows an 11-year solar cycle, and we're currently approaching solar maximum, making this an excellent time for aurora photography.</p>
+        <p>極光活動遵循 11 年太陽週期，目前正接近太陽極大期，是拍攝極光的絕佳時機。</p>
         
-        <h2>Best Locations for Aurora Photography</h2>
-        <p>Iceland offers some of the most accessible aurora viewing, with Reykjavik as a base for northern expeditions. The Jökulsárlón glacier lagoon provides stunning foreground elements for your aurora shots.</p>
+        <h2>最佳拍攝地點</h2>
+        <p>冰島是最方便的極光觀賞地，雷克雅維克是北部探險的良好基地，冰河湖提供壯麗的前景。</p>
         
-        <p>Northern Norway, particularly around Tromsø, offers excellent aurora chances and the unique opportunity to photograph the lights reflecting off fjords. Finnish Lapland and northern Sweden provide pristine wilderness settings with minimal light pollution.</p>
+        <p>挪威特羅姆瑟周邊極光機率極高，峽灣倒映的光景令人驚嘆。芬蘭拉普蘭與瑞典北部則有純淨的荒野，光害極少。</p>
         
-        <h2>Photography Techniques</h2>
-        <p>Use a sturdy tripod and shoot in manual mode with a wide-angle lens. Start with ISO 1600-3200, aperture f/2.8 or wider, and exposure times of 10-25 seconds. Focus manually on infinity and use the camera's timer or a remote shutter to avoid camera shake.</p>
+        <h2>攝影技巧</h2>
+        <p>使用穩固的腳架，手動模式搭配廣角鏡頭。建議 ISO 1600–3200、光圈 f/2.8 或更大、曝光 10–25 秒。手動對焦至無限遠，並使用快門線或定時器避免晃動。</p>
         
-        <p>Include interesting foreground elements like trees, mountains, or buildings to create more compelling compositions. The contrast between the earthbound elements and the celestial display creates powerful visual narratives.</p>
+        <p>在構圖中加入樹木、山脈或建築物，能讓照片更具故事性。天地之間的對比會帶來強烈的視覺效果。</p>
       `
     },
     {
       id: 8,
-      title: "Desert Safari Adventures",
-      description: "Experience the thrill of desert exploration from the Sahara to the Arabian Peninsula's golden dunes.",
-      image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-      date: "Nov 25, 2024",
-      readTime: "8 min read",
+      title: "沙漠探險之旅",
+      description: "從撒哈拉到阿拉伯半島金色沙丘，體驗沙漠的驚險與美麗。",
+      image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?...",
+      date: "2024年11月25日",
+      readTime: "閱讀時間 8 分鐘",
       rating: 4.4,
       slug: "desert-safari-adventures",
       author: "Amira Hassan",
       content: `
-        <p>Desert safaris offer a unique blend of adventure, culture, and natural beauty. From the vast expanses of the Sahara to the towering dunes of the Arabian Peninsula, these landscapes provide unforgettable experiences that connect us with some of Earth's most extreme environments.</p>
+        <p>沙漠探險融合冒險、文化與自然之美。從廣袤的撒哈拉到阿拉伯半島的高聳沙丘，這些景觀帶來難忘的體驗，讓我們與地球最極端的環境產生連結。</p>
         
-        <h2>The Sahara: World's Largest Hot Desert</h2>
-        <p>Morocco's Sahara Desert, accessible from cities like Marrakech and Fez, offers some of the most accessible desert safari experiences. The Erg Chebbi dunes near Merzouga rise up to 150 meters high and provide spectacular sunrise and sunset views.</p>
+        <h2>撒哈拉：世界最大熱沙漠</h2>
+        <p>摩洛哥的撒哈拉沙漠可從馬拉喀什與非斯出發，其中靠近梅祖卡的謝比沙丘高達 150 公尺，日出與日落景色壯觀。</p>
         
-        <p>A traditional camel trek to a Berber camp allows you to experience desert life as nomads have for centuries. Sleep under a canopy of stars more brilliant than you've ever seen, and wake to the haunting call to prayer echoing across the dunes.</p>
+        <p>騎駱駝前往柏柏爾營地，體驗遊牧民族的生活。夜晚仰望滿天繁星，清晨伴隨悠揚的祈禱聲醒來。</p>
         
-        <h2>Arabian Peninsula: Luxury Desert Experiences</h2>
-        <p>The UAE's desert safaris combine traditional Bedouin culture with modern luxury. Dubai and Abu Dhabi offer everything from thrilling dune bashing in 4x4 vehicles to elegant desert resorts where you can enjoy gourmet dining under the stars.</p>
+        <h2>阿拉伯半島：奢華沙漠體驗</h2>
+        <p>阿聯酋的沙漠探險結合傳統貝都因文化與現代奢華。杜拜與阿布達比提供從四驅車衝沙到高級沙漠度假村的各種選擇。</p>
         
-        <p>Don't miss the opportunity to try sandboarding, falconry demonstrations, and traditional henna painting. The contrast between the ultra-modern cities and the timeless desert creates a unique cultural experience.</p>
+        <p>別錯過滑沙、獵鷹表演與指甲花彩繪。現代城市與永恆沙漠的對比，營造獨特的文化體驗。</p>
         
-        <h2>Essential Desert Safari Tips</h2>
-        <p>Pack light, breathable clothing for the day and warm layers for surprisingly cold desert nights. Bring plenty of water, sunscreen, and a hat. Respect local customs and the fragile desert ecosystem by staying on designated paths and taking only photographs.</p>
+        <h2>必備小技巧</h2>
+        <p>白天穿輕薄衣物，夜晚帶保暖衣。隨身攜帶足夠的水、防曬乳與帽子。尊重當地文化與脆弱的沙漠生態，僅留下足跡，帶走照片。</p>
         
-        <p>The best time for desert safaris is during cooler months (October to March) when daytime temperatures are more comfortable for outdoor activities.</p>
+        <p>最佳旅遊時段為涼爽的 10 月至 3 月，白天氣溫較舒適。</p>
       `
     },
     {
       id: 9,
-      title: "Urban Exploration: Modern Architecture",
-      description: "Discover architectural marvels in world's most innovative cities and the stories behind their design.",
-      image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-      date: "Nov 22, 2024",
-      readTime: "6 min read",
+      title: "城市探索：現代建築之美",
+      description: "發現世界最具創新城市的建築奇蹟與設計故事。",
+      image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?...",
+      date: "2024年11月22日",
+      readTime: "閱讀時間 6 分鐘",
       rating: 4.3,
       slug: "urban-exploration-architecture",
       author: "Alexander Chen",
       content: `
-        <p>Modern architecture has transformed city skylines around the world, creating iconic structures that define urban landscapes. These architectural marvels are not just buildings – they're statements of human ambition, technological advancement, and artistic vision.</p>
+        <p>現代建築重塑了全球城市天際線，這些地標不僅是建築，更是人類野心、科技進步與藝術視野的象徵。</p>
         
-        <h2>Dubai: Futuristic Desert Metropolis</h2>
-        <p>Dubai's skyline is a testament to architectural ambition. The Burj Khalifa, standing at 828 meters, redefined what's possible in skyscraper construction. The building's design, inspired by Islamic architecture and desert flowers, demonstrates how modern structures can honor cultural heritage.</p>
+        <h2>杜拜：未來沙漠都市</h2>
+        <p>杜拜的天際線展現了無限的建築企圖心。哈里發塔高達 828 公尺，刷新摩天樓的極限。設計靈感來自伊斯蘭建築與沙漠之花，體現了文化與現代的融合。</p>
         
-        <p>The Museum of the Future, with its distinctive torus shape covered in Arabic calligraphy, represents Dubai's vision of innovation. Its unique design challenges traditional architectural concepts while serving as a symbol of the city's forward-thinking approach.</p>
+        <p>未來博物館的環形建築外覆阿拉伯書法，象徵創新，挑戰傳統建築概念。</p>
         
-        <h2>Singapore: Green Architecture Pioneer</h2>
-        <p>Singapore has pioneered sustainable urban architecture with buildings like the Parkroyal Collection Pickering, which features more greenery than the park it replaced. The city's commitment to biophilic design creates urban oases that improve air quality and provide natural cooling.</p>
+        <h2>新加坡：綠色建築先驅</h2>
+        <p>新加坡以永續都市建築聞名，例如柏克萊精選飯店（Parkroyal Collection Pickering），綠意面積甚至超越公園。親自然設計改善空氣品質並降低溫度。</p>
         
-        <p>The Gardens by the Bay Supertrees are engineering marvels that combine art, architecture, and environmental technology. These 50-meter tall structures collect rainwater, generate solar power, and provide ventilation for the conservatories.</p>
+        <p>濱海灣花園的超級樹結合藝術、建築與環保科技，高達 50 公尺，可收集雨水、產生太陽能並為冷室通風。</p>
         
-        <h2>Copenhagen: Human-Centered Design</h2>
-        <p>Copenhagen's architecture prioritizes human well-being and environmental sustainability. The 8 House by Bjarke Ingels Group creates a mountain-like structure where residents can bike from street level to the 11th floor, redefining urban living.</p>
+        <h2>哥本哈根：以人為本的設計</h2>
+        <p>哥本哈根建築強調人類福祉與環境永續。由 BIG 建築事務所設計的「8 字樓」讓居民能騎腳踏車從一樓到 11 樓，重新定義城市生活。</p>
         
-        <p>The city's commitment to carbon neutrality by 2025 has driven innovative architectural solutions that balance aesthetic appeal with environmental responsibility.</p>
+        <p>該市計劃在 2025 年實現碳中和，驅動建築創新，兼顧美學與永續責任。</p>
       `
     }
+
   ];
 
   // Find the current blog post
