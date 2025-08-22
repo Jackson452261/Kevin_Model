@@ -3,56 +3,19 @@ import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 
 export const Navbar = () => {
-  const location = useLocation();
-  const showPortfolioHero = location.pathname === '/' || location.pathname === '/portfolio' || location.pathname === '/about' || location.pathname === '/service' || location.pathname === '/resume' || location.pathname === '/testimonials' || location.pathname === '/contact';
-  
-  return (
-    <div className={`${showPortfolioHero ? "bg-teal-400" : ""} overflow-x-hidden`}>
-      <PortfolioNav />
-      {showPortfolioHero && <HeroSection />}
-    </div>
-  );
-};
-
-const PortfolioNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const isPortfolioPage = location.pathname === '/' || location.pathname === '/portfolio' || location.pathname === '/about' || location.pathname === '/service' || location.pathname === '/resume' || location.pathname === '/testimonials' || location.pathname === '/contact';
-
+  const showPortfolioHero = location.pathname === '/' || location.pathname === '/portfolio' || location.pathname === '/about' || location.pathname === '/service' || location.pathname === '/resume' || location.pathname === '/testimonials' || location.pathname === '/contact';
+  const isPortfolioPage = location.pathname === '/' || location.pathname === '/portfolio' || location.pathname === '/about' || location.pathname === '/service' || location.pathname === '/resume' || location.pathname === '/testimonials' || location.pathname === '/contact' || location.pathname === '/blog' || location.pathname === '/problem' || location.pathname === '/gallery';
+  
   return (
-    <nav className={`${isPortfolioPage ? 'bg-teal-400' : 'bg-white border-b border-gray-200'} px-6 py-4 flex items-center justify-between relative w-full max-w-full overflow-x-hidden`}>
-      {/* Logo */}
+    <div className={`${showPortfolioHero ? "bg-teal-400" : ""} overflow-x-hidden relative`}>
+      <PortfolioNav isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      {showPortfolioHero && <HeroSection />}
       
-      <Link to="/" className={`${isPortfolioPage ? 'text-black hover:text-gray-700' : 'text-gray-800 hover:text-indigo-600'} font-bold text-xl tracking-wider transition-colors duration-200`}>
-        Kevin攝影
-      </Link>
-
-      {/* Desktop Navigation */}
-      <div className="hidden md:flex items-center space-x-4 lg:space-x-8 flex-wrap">
-        <NavLink to="/" text="首頁" isPortfolioPage={isPortfolioPage} />
-        <NavLink to="/blog" text="Blog" isPortfolioPage={isPortfolioPage} />
-        <NavLink to="/problem" text="問與答Q&A" isPortfolioPage={isPortfolioPage} />
-        <NavLink to="/about" text="About" isPortfolioPage={isPortfolioPage} />
-        <NavLink to="/gallery" text="攝影照片" isPortfolioPage={isPortfolioPage} />
-         
-        <NavLink to="/portfolio" text="Portfolio" isPortfolioPage={isPortfolioPage} />
-       
-        <ContactLink text="Contact" isPortfolioPage={isPortfolioPage} />
-      </div>
-
-      {/* Mobile Menu Button */}
-      <button
-        className={`md:hidden ${isPortfolioPage ? 'text-black' : 'text-gray-800'}`}
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Outside navbar to overlay hero section */}
       {isMenuOpen && (
-        <div className={`absolute top-full left-0 right-0 ${isPortfolioPage ? 'bg-teal-400' : 'bg-white border-b border-gray-200'} md:hidden z-50`}>
+        <div className={`absolute top-[80px] left-0 right-0 ${isPortfolioPage ? 'bg-slate-600' : 'bg-white border-b border-gray-200'} md:hidden z-[9999] shadow-lg`}>
           <div className="flex flex-col space-y-4 px-6 py-4">
             <MobileNavLink to="/" text="首頁" isPortfolioPage={isPortfolioPage} />
             <MobileNavLink to="/blog" text="Blog" isPortfolioPage={isPortfolioPage} />
@@ -66,6 +29,42 @@ const PortfolioNav = () => {
           </div>
         </div>
       )}
+    </div>
+  );
+};
+
+const PortfolioNav = ({ isMenuOpen, setIsMenuOpen }) => {
+  const location = useLocation();
+  const isPortfolioPage = location.pathname === '/' || location.pathname === '/portfolio' || location.pathname === '/about' || location.pathname === '/service' || location.pathname === '/resume' || location.pathname === '/testimonials' || location.pathname === '/contact' || location.pathname === '/blog' || location.pathname === '/problem' || location.pathname === '/gallery';
+
+  return (
+    <nav className={`${isPortfolioPage ? 'bg-slate-600' : 'bg-white border-b border-gray-200'} px-6 py-4 flex items-center justify-between relative w-full max-w-full overflow-x-hidden`}>
+      {/* Logo */}
+      
+      <Link to="/" className={`${isPortfolioPage ? 'text-white hover:text-gray-300' : 'text-gray-800 hover:text-indigo-600'} font-bold text-xl tracking-wider transition-colors duration-200`}>
+        Kevin攝影
+      </Link>
+
+      {/* Desktop Navigation */}
+      <div className="hidden md:flex items-center space-x-4 lg:space-x-8 flex-wrap">
+        <NavLink to="/" text="首頁" isPortfolioPage={isPortfolioPage} />
+        <NavLink to="/blog" text="Blog" isPortfolioPage={isPortfolioPage} />
+        <NavLink to="/problem" text="問與答Q&A" isPortfolioPage={isPortfolioPage} />
+        <NavLink to="/about" text="About" isPortfolioPage={isPortfolioPage} />
+        <NavLink to="/gallery" text="攝影照片" isPortfolioPage={isPortfolioPage} />
+        <NavLink to="/portfolio" text="Portfolio" isPortfolioPage={isPortfolioPage} />
+        <ContactLink text="Contact" isPortfolioPage={isPortfolioPage} />
+      </div>
+
+      {/* Mobile Menu Button */}
+      <button
+        className={`md:hidden flex items-center justify-center p-2 ${isPortfolioPage ? 'text-white' : 'text-gray-800'}`}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </nav>
   );
 };
@@ -127,7 +126,7 @@ const NavLink = ({ to, text, isPortfolioPage }) => {
       to={to}
       className={`${
         isPortfolioPage 
-          ? 'text-black hover:text-gray-700' 
+          ? 'text-white hover:text-gray-300' 
           : 'text-gray-600 hover:text-indigo-600'
       } font-medium transition-colors duration-200`}
     >
@@ -142,7 +141,7 @@ const MobileNavLink = ({ to, text, isPortfolioPage }) => {
       to={to}
       className={`${
         isPortfolioPage 
-          ? 'text-black hover:text-gray-700' 
+          ? 'text-white hover:text-gray-300' 
           : 'text-gray-600 hover:text-indigo-600'
       } font-medium transition-colors duration-200`}
     >
@@ -164,7 +163,7 @@ const ContactLink = ({ text, isPortfolioPage }) => {
       onClick={scrollToFooter}
       className={`${
         isPortfolioPage 
-          ? 'text-black hover:text-gray-700' 
+          ? 'text-white hover:text-gray-300' 
           : 'text-gray-600 hover:text-indigo-600'
       } font-medium transition-colors duration-200`}
     >
@@ -186,7 +185,7 @@ const MobileContactLink = ({ text, isPortfolioPage }) => {
       onClick={scrollToFooter}
       className={`${
         isPortfolioPage 
-          ? 'text-black hover:text-gray-700' 
+          ? 'text-white hover:text-gray-300' 
           : 'text-gray-600 hover:text-indigo-600'
       } font-medium transition-colors duration-200`}
     >

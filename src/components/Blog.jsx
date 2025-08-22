@@ -260,10 +260,9 @@ const Blog = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Latest Adventures</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">分享攝影</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Follow our journey as we explore the most beautiful places on Earth
-            and share insider tips for your next adventure.
+            
           </p>
         </div>
 
